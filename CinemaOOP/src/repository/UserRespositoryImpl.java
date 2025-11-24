@@ -104,7 +104,7 @@ public class UserRespositoryImpl implements UserRepository {
 	}
 
 	public boolean updateUser(String id, String name, String hashedPassword) throws SQLException {
-		String query = "INSERT users SET name = ?, password = ? WHERE id = ?";
+		String query = "UPDATE users SET name = ?, password = ? WHERE id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1, name);

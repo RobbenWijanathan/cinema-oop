@@ -3,14 +3,13 @@ package repository;
 import java.sql.SQLException;
 import java.util.List;
 
-import model.Studio;
+import model.Movie;
 
 public interface MovieRepository {
-	public List<Studio> getStudios() throws SQLException;
-	public Studio getStudioById(String id) throws SQLException;
-	public Studio getStudioByMovieId(String movieId) throws SQLException;
-	public Studio getStudioByTheatreId(String theatreId) throws SQLException;
-	public boolean createStudio(int number, double basePrice, int seatCapacity, String type, int movieId, int theatreId) throws SQLException;
-	public boolean updateStudio(String id) throws SQLException;
-	public boolean deleteStudio(String id) throws SQLException;
+	public List<Movie> getMovies() throws SQLException;
+	public Movie getMovieById(String id) throws SQLException;
+	public List<Movie> getMovieByTitle(String title) throws SQLException;
+	public boolean createMovie(String title, String genre, String director, String actors, int duration, String ageRating, double rating) throws SQLException;
+	public boolean updateMovie(String id) throws SQLException;
+	public boolean deleteMovie(String id) throws SQLException;
 }

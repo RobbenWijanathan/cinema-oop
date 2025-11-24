@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Theatre {
-	private Strint id;
+	private String id;
 	private String name;
 	private ArrayList<Studio> studios;
 	public Theatre(String id, String name, ArrayList<Studio> studios) {

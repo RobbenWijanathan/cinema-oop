@@ -7,15 +7,17 @@ public class Studio {
 	private int number;
 	private double basePrice;
 	private int seatCapacity;
+	protected String type;
 	private Movie movie;
 	private ArrayList<Schedule> schedules;
 	private Theatre theatre;
 	
-	public Studio(String id, int number, double basePrice, int seatCapacity, Movie movie, ArrayList<Schedule> schedules,
+	public Studio(String id, int number, double basePrice, int seatCapacity, String type,Movie movie, ArrayList<Schedule> schedules,
 			Theatre theatre) {
 		super();
 		this.id = id;
 		this.number = number;
+		this.type = type;
 		this.basePrice = basePrice;
 		this.seatCapacity = seatCapacity;
 		this.movie = movie;
