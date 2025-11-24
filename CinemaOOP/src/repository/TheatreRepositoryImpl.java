@@ -96,7 +96,7 @@ public class TheatreRepositoryImpl implements TheatreRepository {
 	}
 	@Override
 	public boolean createTheatre(String name) throws SQLException {
-		String query = "INSERT INTO users (name) VALUES (?)";
+		String query = "INSERT INTO theatres (name) VALUES (?)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1, name);
@@ -112,7 +112,7 @@ public class TheatreRepositoryImpl implements TheatreRepository {
 	}
 	@Override
 	public boolean updateTheatre(String id, String name) throws SQLException {
-		String query = "UPDATE users SET name = ? WHERE id = ?";
+		String query = "UPDATE theatres SET name = ? WHERE id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1, name);

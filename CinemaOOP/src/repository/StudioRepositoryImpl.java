@@ -139,18 +139,62 @@ public class StudioRepositoryImpl implements StudioRepository {
 	@Override
 	public boolean createStudio(int number, double basePrice, int seatCapacity, String type, int movieId, int theatreId)
 			throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		String query = "INSERT INTO studios (number, basePrice, seatCapacity, type, movieId, theatreId) VALUES (?, ?, ?, ?, ?, ?)";
+		try {
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, number);
+			ps.setDouble(2, basePrice);
+			ps.setInt(3, seatCapacity);
+			ps.setString(4, type);
+			ps.setInt(5, movieId);
+			ps.setInt(6,  theatreId);
+			ps.executeUpdate();
+			return true;
+		}
+		catch(SQLException e) {
+			throw e;
+		}
+		catch(Exception e) {
+			throw e;
+		}
 	}
 	@Override
-	public boolean updateStudio(String id, double basePrice, int seatCapacity, String type, int movieId, int theatreId)
+	public boolean updateStudio(String id, int number, double basePrice, int seatCapacity, String type, String movieId, String theatreId)
 			throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		String query = "UPDATE studios SET number = ?, basePrice = ?, seatCapacity = ?, type = ?, movieId = ?, theatreId = ? WHERE id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, number);
+			ps.setDouble(2, basePrice);
+			ps.setInt(3, seatCapacity);
+			ps.setString(4, type);
+			ps.setInt(5, Integer.parseInt(movieId));
+			ps.setInt(6,  Integer.parseInt(theatreId));
+			ps.setInt(7, Integer.parseInt(id));
+			ps.executeUpdate();
+			return true;
+		}
+		catch(SQLException e) {
+			throw e;
+		}
+		catch(Exception e) {
+			throw e;
+		}
 	}
 	@Override
 	public boolean deleteStudio(String id) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		String query = "DELETE FROM studios WHERE id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, Integer.parseInt(id));
+			ps.executeUpdate();
+			return true;
+		}
+		catch(SQLException e) {
+			throw e;
+		}
+		catch(Exception e) {
+			throw e;
+		}
 	}
 }

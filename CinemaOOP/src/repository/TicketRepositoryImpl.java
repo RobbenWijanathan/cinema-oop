@@ -147,7 +147,7 @@ public class TicketRepositoryImpl implements TicketRepository {
 	}
 	@Override
 	public boolean updateTicket(String id, double ticketPrice, int scheduleId, int userId) throws SQLException {
-		String query = "UPDATE users SET ticketPrice = ?, scheduleId = ?, userId = ? WHERE id = ?";
+		String query = "UPDATE tickets SET ticketPrice = ?, scheduleId = ?, userId = ? WHERE id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setDouble(1, ticketPrice);
@@ -166,7 +166,7 @@ public class TicketRepositoryImpl implements TicketRepository {
 	}
 	@Override
 	public boolean deleteTicket(String id) throws SQLException {
-		String query = "DELETE FROM users WHERE id = ?";
+		String query = "DELETE FROM tickets WHERE id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setInt(1, Integer.parseInt(id));
