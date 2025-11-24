@@ -1,14 +1,14 @@
 package model;
 
-import java.sql.Time;
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Schedule {
 	private String id;
-	private int time;
+	private Date time;
 	private ArrayList<Seat> seats;
 	private Studio studio;
-	public Schedule(String id, int time, ArrayList<Seat> seats, Studio studio) {
+	public Schedule(String id, Date time, ArrayList<Seat> seats, Studio studio) {
 		super();
 		this.id = id;
 		this.time = time;
@@ -21,10 +21,10 @@ public class Schedule {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public int getTime() {
+	public Date getTime() {
 		return time;
 	}
-	public void setTime(int time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 	public ArrayList<Seat> getSeats() {

@@ -5,14 +5,16 @@ public class Seat {
 	private boolean booked;
 	private int row;
 	private int column;
-	private String ticketId;
-	private String scheduleId;
-	public Seat(String id, boolean booked, int row, int column) {
+	private Ticket ticket;
+	private Schedule scheduleId;
+	public Seat(String id, boolean booked, int row, int column, Ticket ticket, Schedule scheduleId) {
 		super();
 		this.id = id;
 		this.booked = booked;
 		this.row = row;
 		this.column = column;
+		this.ticket = ticket;
+		this.scheduleId = scheduleId;
 	}
 	public String getId() {
 		return id;
