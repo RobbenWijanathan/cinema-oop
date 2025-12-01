@@ -6,7 +6,7 @@ import helper.ClearScreen;
 public class MainMenu {
     ClearScreen clearScreen = new ClearScreen();
     public void showTicketTransaction(){
-        
+
     }
     public void seat(){
         showTicketTransaction();
