@@ -3,6 +3,7 @@ import java.sql.Statement;
 
 import db.DBConn;
 import db.MySQLConn;
+import ui_ux.Landing;
 
 public class Main {
     public Main() {
@@ -15,6 +16,8 @@ public class Main {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		Landing landing = new Landing();
+		landing.loginRegister();
     }
     public static void main(String[] args){
         new Main();
