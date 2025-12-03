@@ -4,11 +4,8 @@ import java.util.Scanner;
 import helper.ClearScreen;
 
 public class Landing {
-    MainMenu mainMenu = new MainMenu();
-    AdminMenu adminMenu = new AdminMenu();
-    ClearScreen clearScreen = new ClearScreen();
-    public void login(){
-        clearScreen.clearScreen();
+    public static void login(){
+        ClearScreen.clearScreen();
         String username, password;
         System.out.println("  _              _      ");
         System.out.println(" | |   ___  __ _(_)_ _  ");
@@ -27,7 +24,7 @@ public class Landing {
             } else {
                 System.out.println("Username must be more than 5 characters");
             }
-//            CHECK IF USERNAME IS NOT IN THE DATABASE
+//            TODO: CHECK IF USERNAME IS NOT IN THE DATABASE
             if(username.equals("n")){
                 return;
             }
@@ -37,24 +34,93 @@ public class Landing {
             System.out.println("Enter Password");
             System.out.print(">> ");
             password = scanner.nextLine();
-//            CHECK IF PASSWORD != PASSWORD IN THE DATABASE
+//            TODO: CHECK IF PASSWORD != PASSWORD IN THE DATABASE
+            if(password.equals("n")){
+                return;
+            }
             break; // temporary break
-//            if(password.equals("n")){
-//                return;
-//            }
         }
 
         if(username.equals("admin")){
-            adminMenu.adminMenu();
+            AdminMenu.adminMenu();
         } else {
-            mainMenu.mainMenu();
+            MainMenu.mainMenu();
         }
     }
-    public void register(){
-        clearScreen.clearScreen();
+    public static void register(){
+        ClearScreen.clearScreen();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("  ___          _    _           ");
+        System.out.println(" | _ \\___ __ _(_)__| |_ ___ _ _ ");
+        System.out.println(" |   / -_) _` | (_-<  _/ -_) '_|");
+        System.out.println(" |_|_\\___\\__, |_/__/\\__\\___|_|  ");
+        System.out.println("         |___/                  ");
+        System.out.println();
+        System.out.println("(Type \"n\" to go back)");
+
+        System.out.println("Enter Username");
+        System.out.print(">> ");
+        String username = scanner.nextLine();
+
+        if (username.equalsIgnoreCase("n")) {
+            return;
+        }
+
+        String password;
+        while (true) {
+            System.out.println("\nEnter password [8-16 characters (at least 1 letter and 1 number)]");
+            System.out.print(">> ");
+            password = scanner.nextLine();
+
+            if (password.equalsIgnoreCase("n")) {
+                return;
+            }
+
+            boolean validLength = password.length() >= 8 && password.length() <= 16;
+            boolean hasLetter = password.matches(".*[A-Za-z].*");
+            boolean hasDigit = password.matches(".*[0-9].*");
+            boolean isAlphanumeric = password.matches("[A-Za-z0-9]+");
+
+            if (!validLength) {
+                System.out.println("Password must be 8-16 characters long!");
+                continue;
+            }
+            if (!isAlphanumeric) {
+                System.out.println("Password must be alphanumeric (letters & numbers only)!");
+                continue;
+            }
+            if (!hasLetter || !hasDigit) {
+                System.out.println("Password must contain at least 1 letter and 1 number!");
+                continue;
+            }
+
+            break;
+        }
+
+        while (true) {
+            System.out.println("\nConfirm Password");
+            System.out.print(">> ");
+            String confirm = scanner.nextLine();
+            if (confirm.equalsIgnoreCase("n")) {
+                return;
+            }
+            if (!confirm.equals(password)) {
+                System.out.println("Passwords do not match! Try again.");
+                continue;
+            }
+            break;
+        }
+
+//        TODO: ADD NEW USER FROM THE REGIS DATA
+
+        System.out.println("\nYou're Registered!");
+        System.out.println(">> Enter to go back to main menu");
+        scanner.nextLine();
+
     }
-    public void loginRegister() {
-        clearScreen.clearScreen();
+    public static void loginRegister() {
+        ClearScreen.clearScreen();
         System.out.println(" __  _  _  _  ___  _   _   _     _   _  ___ ");
         System.out.println(" / _|| || \\| || __|| \\_/ | / \\   / \\ / \\| o \\");
         System.out.println("( (_ | || \\\\ || _| | \\_/ || o | ( o | o )  _/");
